@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
+<!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8"> <![endif]-->
+<!--[if IE 8]>         <html class="no-js lt-ie9"> <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js"> <!--<![endif]-->
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+        <title>Test</title>
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width">
+
+        <!-- Place favicon.ico and apple-touch-icon.png in the root directory -->
+
+        <link rel="stylesheet" href="css/normalize.css">
+        <link rel="stylesheet" href="css/main.css">
+        <script src="js/vendor/modernizr-2.6.2.min.js"></script>
+    </head>
+    <body>
+        <!--[if lt IE 7]>
+            <p class="chromeframe">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> or <a href="http://www.google.com/chromeframe/?redirect=true">activate Google Chrome Frame</a> to improve your experience.</p>
+        <![endif]-->
+
+        <!-- Add your site or application content here -->
+
+        <header id="frmTopBar">Place Holder frmTopBar</header>
+        <section id="frmClassTimes">Place Holder frmClassTimes</section>
+        <section id="frmCollegeInfo">Place Holder frmCollegeinfo</section>
+        <div id="frmQRCode"><div id="qrcode"></div></div>
+        <section id="frmImpDates">Place Holder frmImpDates</section>
+        <section id="frmRemWeeks" class="important">Place Holder frmRemWeeks</section>
+        
+        <!-- attempt to get latest jquery -->        
+        <script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.0/jquery.min.js"></script>
+        <!-- did we get latest jquery if not use the local version -->        
+        <script>window.jQuery || document.write('<script src="js/vendor/jquery-1.9.0.min.js"><\/script>')</script>
+        <script src="js/plugins.js"></script>
+        <script src="js/main.js"></script>
+        <!-- javascript qr code -->
+        <script type="text/javascript" src="js/vendor/jquery.qrcode.js"></script>
+        <script type="text/javascript" src="js/vendor/qrcode.js"></script>
+        <script>
+    	    	jQuery('#qrcode').qrcode({width: 300, height: 300, text	: "Computing is not great!!" });
+        </script>
+        <script>
+                $( "#frmRemWeeks" ).html( "NUMBER OF WEEKS REMAINING 32" );
+        </script>
+        <script>
+            var classtimes = $.get("interface.php", {task: "1"} )
+                  .done(function(data) { $('#frmClassTimes').html(data); })
+                  .fail(function() { $('#frmClassTimes').html("error" ); });
+            var classtimes = $.get("interface.php", {task: "2"} )
+                  .done(function(data) { $('#frmCollegeInfo').html(data); })
+                  .fail(function() { $('#frmCollegeInfo').html("error" ); });
+            var classtimes = $.get("interface.php", {task: "3"} )
+                  .done(function(data) { $('#qrcode').html("");
+                                        jQuery('#qrcode').qrcode({width: 300, height: 300, text: data }); })
+                  .fail(function() { $('#qrcode').html("error" ); });
+            var classtimes = $.get("interface.php", {task: "4"} )
+                  .done(function(data) { $('#frmImpDates').html(data); })
+                  .fail(function() { $('#frmImpDates').html("error" ); });
+            var classtimes = $.get("interface.php", {task: "5"} )
+                  .done(function(data) { $('#frmRemWeeks').html(data); })
+                  .fail(function() { $('#frmRemWeeks').html("error" ); });
+        </script>
+        
+    </body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
