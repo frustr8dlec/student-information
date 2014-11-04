@@ -1,4 +1,5 @@
 <?php
+/* Author: Stephen Smith */
 class DataStore {
     
     private $server;   // Server name
