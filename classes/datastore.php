@@ -8,13 +8,17 @@ class DataStore {
     private $password; // Password for database user 
     private $db;       // Database connection object
     
-    public function __Construct(){
+    public function __construct(){
         $this->server = '';
         $this->database = '';
         $this->user = '';
         $this->password = '';
         $this->db = 1;
         $this->connectDatabase();
+    }
+    
+    function __destruct() {
+        $this->disconnectDatabase();
     }
     
     private function connectDatabase(){
